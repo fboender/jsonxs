@@ -1,9 +1,10 @@
 JSONxs
 ======
 
-JSONxs is a Python library that uses a path expression string to get and set
-values in JSON and Python datastructures. It's slightly similar to JSONPath,
-but supports only simpler expressions and allows modifications.
+JSONxs is a Python library that uses a path expression string to get and
+set values in JSON and Python datastructures. It's slightly similar to
+JSONPath, but supports only simpler expressions and allows
+modifications.
 
 JSONxs is safe to use with untrusted input.
 
@@ -11,6 +12,8 @@ Examples
 --------
 
 Given the folowing datastructure:
+
+::
 
     d = {
       'feed': {
@@ -22,6 +25,8 @@ Given the folowing datastructure:
     }
 
 We can get, set and delete values from the stucture.
+
+::
 
     jsonxs(d, 'feed.id')                                  # Get the 'id' field: 'my_feed'
     jsonxs(d, 'feed.tags')                                # Get the list of tags.
@@ -36,21 +41,23 @@ We can get, set and delete values from the stucture.
     jsonxs(d, 'feed.details', ACTION_MKDICT)              # Create new key/dict value in dict
     jsonxs(d, 'feed.details', ACTION_MKLIST)              # Create new key/list value in dict
 
-
 Installation and usage
 ----------------------
 
 To install:
 
+::
+
     pip install jsonxs
 
 To use:
+
+::
 
     from jsonxs import *
     data = {'foo': 1}
     jsonxs(data, 'bar', ACTION_SET, 2)
     print data  # {'foo': 1, 'bar': 2}
-
 
 License
 -------
@@ -59,21 +66,21 @@ JSONxs is licensed under the MIT license:
 
 Copyright (c) 2015 Ferry Boender (ferry.boender@gmail.com)
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including
 without limitation the rights to use, copy, modify, merge, publish,
 distribute, sublicense, and/or sell copies of the Software, and to
 permit persons to whom the Software is furnished to do so, subject to
 the following conditions:
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
