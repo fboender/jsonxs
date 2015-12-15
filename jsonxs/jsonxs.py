@@ -81,7 +81,6 @@ def tokenize(expr):
     """
     tokens = []
     escape = False
-    token_type = 'T_KEY'
     cur_token = ''
 
     for c in expr:
@@ -94,19 +93,16 @@ def tokenize(expr):
             if len(cur_token) > 0:
                 tokens.append(cur_token)
                 cur_token = ''
-            token_type = 'INDEX'
         elif not escape and c == ']':
             # End of index token. Next token defaults to a key (dict)
             if len(cur_token) > 0:
                 tokens.append(int(cur_token))
                 cur_token = ''
-            token_type = 'KEY'
         elif not escape and c == '.':
             # End of key token. Next token defaults to a key (dict)
             if len(cur_token) > 0:
                 tokens.append(cur_token)
                 cur_token = ''
-            token_type = 'KEY'
         else:
             # Append char to token name
             cur_token += c
