@@ -10,13 +10,18 @@ For example:
     ...   'feed': {
     ...     'id': 'my_feed',
     ...     'url': 'http://example.com/feed.rss',
-    ...     'tags': ['devel', 'example', 'python']
+    ...     'tags': ['devel', 'example', 'python'],
+    ...     'short.desc': 'A feed',
     ...   }
     ... }
 
     # Get the value for a path expression
     >>> jsonxs(d, 'feed.tags[-1]')
     'python'
+
+    # Access paths with special chars in them
+    >>> jsonxs(d, 'feed.short\.desc')
+    'A feed'
 
     # Set the value for a path expression
     >>> jsonxs(d, 'feed.id', ACTION_SET, 'your_feed')

@@ -16,7 +16,8 @@ Given the folowing datastructure:
       'feed': {
         'id': 'my_feed',
         'url': 'http://example.com/feed.rss',
-        'tags': ['devel', 'example', 'python']
+        'tags': ['devel', 'example', 'python'],
+        'short.desc': 'A feed',
       }
     }
 
@@ -25,6 +26,7 @@ We can get, set and delete values from the stucture.
     jsonxs(d, 'feed.id')                                  # Get the 'id' field: 'my_feed'
     jsonxs(d, 'feed.tags')                                # Get the list of tags.
     jsonxs(d, 'feed.tags[-1]')                            # Get the last item in the 'tags' list: 'python'
+    jsonxs(d, 'feed.short\.desc')                         # Escape special char
     jsonxs(d, 'feed.id', ACTION_SET, 'your_feed')         # Set feed id to 'your_feed'
     jsonxs(d, 'feed.tags[-1]', ACTION_SET, 'javascript')  # Replace 'python' with 'javascript'
     jsonxs(d, 'feed.tags[0]', ACTION_DEL)                 # Delete the first tag
