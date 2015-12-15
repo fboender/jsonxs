@@ -5,6 +5,8 @@ JSONxs is a Python library that uses a path expression string to get and set
 values in JSON and Python datastructures. It's slightly similar to JSONPath,
 but supports only simpler expressions and allows modifications.
 
+JSONxs is safe to use with untrusted input.
+
 Examples
 --------
 
