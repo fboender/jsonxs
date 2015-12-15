@@ -36,12 +36,21 @@ We can get, set and delete values from the stucture.
     jsonxs(d, 'feed.details', ACTION_MKDICT)              # Create new key/dict value in dict
     jsonxs(d, 'feed.details', ACTION_MKLIST)              # Create new key/list value in dict
 
-Installation
-------------
+
+Installation and usage
+----------------------
 
 To install:
 
     pip install jsonxs
+
+To use:
+
+    from jsonxs import *
+    data = {'foo': 1}
+    jsonxs(data, 'bar', ACTION_SET, 2)
+    print data  # {'foo': 1, 'bar': 2}
+
 
 License
 -------
