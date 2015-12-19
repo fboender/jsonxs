@@ -37,6 +37,7 @@ We can get, set and delete values from the stucture.
     jsonxs(d, 'feed.tags[0]', ACTION_DEL)                 # Delete the first tag
     jsonxs(d, 'feed.url', ACTION_DEL)                     # Delete the 'url' key from a dict
     jsonxs(d, 'feed.tags', ACTION_APPEND, 'programming')  # Append 'programming' to tags
+    jsonxs(d, 'feed.tags[1]', ACTION_INSERT, 'tech')      # Insert 'tech' at pos 1 in tags
     jsonxs(d, 'feed.author', ACTION_SET, 'Ferry Boender') # Create new key/string value in dict 
     jsonxs(d, 'feed.details', ACTION_MKDICT)              # Create new key/dict value in dict
     jsonxs(d, 'feed.details', ACTION_MKLIST)              # Create new key/list value in dict

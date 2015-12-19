@@ -53,6 +53,11 @@ For example:
     >>> d['feed']['tags']
     ['example', 'javascript', 'programming']
 
+    # Insert a value to a list
+    >>> jsonxs(d, 'feed.tags[1]', ACTION_INSERT, 'tech')
+    >>> d['feed']['tags']
+    ['example', 'tech', 'javascript', 'programming']
+
     # Create a dict value
     >>> jsonxs(d, 'feed.details', ACTION_MKDICT)
     >>> d['feed']['details'] == {}
@@ -75,6 +80,7 @@ ACTION_GET = 'get'
 ACTION_SET = 'set'
 ACTION_DEL = 'del'
 ACTION_APPEND = 'append'
+ACTION_INSERT = 'insert'
 ACTION_MKDICT = 'mkdict'
 ACTION_MKLIST = 'mklist'
 
@@ -151,6 +157,8 @@ def jsonxs(data, expr, action=ACTION_GET, value=None):
         prev_path[token] = value
     elif action == ACTION_APPEND:
         prev_path[token].append(value)
+    elif action == ACTION_INSERT:
+        prev_path.insert(token, value)
     elif action == ACTION_MKDICT:
         prev_path[token] = {}
     elif action == ACTION_MKLIST:
