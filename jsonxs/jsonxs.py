@@ -23,6 +23,10 @@ For example:
     >>> jsonxs(d, 'feed.short\.desc')
     'A feed'
 
+    # Return default value if path not found
+    >>> jsonxs(d, 'feed.long\.desc', default='N/A')
+    'N/A'
+
     # Set the value for a path expression
     >>> jsonxs(d, 'feed.id', ACTION_SET, 'your_feed')
     >>> d['feed']['id']
@@ -127,26 +131,33 @@ def tokenize(expr):
     return tokens
 
 
-def jsonxs(data, expr, action=ACTION_GET, value=None):
+def jsonxs(data, expr, action=ACTION_GET, value=None, default=None):
     """
     Get, set, delete values in a JSON structure. `expr` is a JSONpath-like
     expression pointing to the desired value. `action` determines the action to
     perform. See the module-level `ACTION_*` constants. `value` should be given
-    if action is `ACTION_SET`.
+    if action is `ACTION_SET`. If `default` is set and `expr` isn't found,
+    return `default` instead. This will override all exceptions.
     """
     tokens = tokenize(expr)
 
     # Walk through the list of tokens to reach the correct path in the data
     # structure.
-    prev_path = None
-    cur_path = data
-    for token in tokens:
-        prev_path = cur_path
-        if not token in cur_path and action in [ACTION_SET, ACTION_MKDICT, ACTION_MKLIST]:
-            # When setting values or creating dicts/lists, the key can be
-            # missing from the data struture
-           continue
-        cur_path = cur_path[token]
+    try:
+        prev_path = None
+        cur_path = data
+        for token in tokens:
+            prev_path = cur_path
+            if not token in cur_path and action in [ACTION_SET, ACTION_MKDICT, ACTION_MKLIST]:
+                # When setting values or creating dicts/lists, the key can be
+                # missing from the data struture
+               continue
+            cur_path = cur_path[token]
+    except Exception:
+        if default is not None:
+            return default
+        else:
+            raise
 
     # Perform action the user requested.
     if action == ACTION_GET:
