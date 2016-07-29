@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='jsonxs',
-      version='0.2',
+      version='0.3',
       description='Use path expression strings to get and set values in JSON',
       long_description=open('README.rst').read(),
       url='https://github.com/fboender/jsonxs',
