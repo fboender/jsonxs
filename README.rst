@@ -56,7 +56,7 @@ To use:
 
 ::
 
-    from jsonxs import *
+    from jsonxs import jsonxs
     data = {'foo': 1}
     jsonxs(data, 'bar', ACTION_SET, 2)
     print data  # {'foo': 1, 'bar': 2}

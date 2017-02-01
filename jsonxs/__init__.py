@@ -1,2 +1,1 @@
-from jsonxs import *
-del tokenize
+from .jsonxs import jsonxs
