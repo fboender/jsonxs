@@ -56,10 +56,12 @@ To use:
 
 ::
 
-    from jsonxs import jsonxs
+    import jsonxs
+
     data = {'foo': 1}
-    jsonxs(data, 'bar', ACTION_SET, 2)
+    jsonxs.jsonxs(data, 'bar', jsonxs.ACTION_SET, 2)
     print data  # {'foo': 1, 'bar': 2}
+
 
 License
 -------
