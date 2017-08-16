@@ -12,6 +12,11 @@ For example:
     ...     'url': 'http://example.com/feed.rss',
     ...     'tags': ['devel', 'example', 'python'],
     ...     'short.desc': 'A feed',
+    ...     'list': [
+    ...       {
+    ...         'uuid': 'e9b48a2'
+    ...       }
+    ...     ]
     ...   }
     ... }
 
@@ -66,6 +71,9 @@ For example:
     >>> jsonxs(d, 'feed.details', ACTION_MKDICT)
     >>> d['feed']['details'] == {}
     True
+
+    # Add a key / value to newly created dict
+    >>> jsonxs(d, 'feed.list[0].uuid', ACTION_SET, 'aeaeae')
 
     # Create a list value
     >>> jsonxs(d, 'feed.details.users', ACTION_MKLIST)
@@ -148,10 +156,12 @@ def jsonxs(data, expr, action=ACTION_GET, value=None, default=None):
         cur_path = data
         for token in tokens:
             prev_path = cur_path
-            if not token in cur_path and action in [ACTION_SET, ACTION_MKDICT, ACTION_MKLIST]:
-                # When setting values or creating dicts/lists, the key can be
-                # missing from the data struture
-               continue
+            if type(cur_path) is not list:
+                if not token in cur_path:
+                    if action in [ACTION_SET, ACTION_MKDICT, ACTION_MKLIST]:
+                        # When setting values or creating dicts/lists, the key can be
+                        # missing from the data struture
+                        continue
             cur_path = cur_path[token]
     except Exception:
         if default is not None:
