@@ -63,6 +63,21 @@ To use:
     print data  # {'foo': 1, 'bar': 2}
 
 
+Run Tests
+---------
+
+Install `tox`:
+
+::
+
+    pip install tox
+
+Run tests:
+
+::
+
+    tox
+
 License
 -------
 
