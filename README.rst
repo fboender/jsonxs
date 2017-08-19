@@ -62,6 +62,20 @@ To use:
     jsonxs.jsonxs(data, 'bar', jsonxs.ACTION_SET, 2)
     print data  # {'foo': 1, 'bar': 2}
 
+Run Tests
+---------
+
+Install `tox`:
+
+::
+
+    pip install tox
+
+Run tests:
+
+::
+
+    tox
 
 License
 -------
