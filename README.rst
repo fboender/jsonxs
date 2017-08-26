@@ -63,6 +63,16 @@ To use:
     print data  # {'foo': 1, 'bar': 2}
 
 
+Development
+-----------
+
+To run the tests:
+
+::
+
+    $ python jsonxs/jsonxs.py -v
+
+
 License
 -------
 
